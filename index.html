@@ -2,11 +2,109 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Wheater</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+      integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N"
+      crossorigin="anonymous"
+      s
+    />
+    <link rel="stylesheet" href="src/styles.css" />
+
+    <script
+      src="https://kit.fontawesome.com/794a118cb0.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
-    <h1></h1>Hello
+    <div class="container">
+      <h1>Wheater App</h1>
+      <div class="card">
+        <div class="card-body">
+          <form id="search-form">
+            <input
+              class="form-group"
+              type="text"
+              placeholder="Enter a city"
+              autocomplete="off"
+              id="search-input"
+            />
+            <input class="search-button" type="submit" value="Search" />
+            <button id="button-input" class="btn">
+              <i class="fa-solid fa-map-pin" id="current"></i>
+            </button>
+          </form>
+          <br />
+          <div class="row">
+            <div class="col-6 current-city" id="city-input">
+              <i class="fa-solid fa-map-pin"></i>
+              <span id="current-city"></span>
+            </div>
+            <div class="col-6 actual-temperature">
+              <ul>
+                <li>
+                  <i class="fa-solid fa-sun"></i> <span id="temp"> </span>ºC
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="row date-details">
+            <div class="col-6" id="today-date">
+              Thursday, 29 September, 21h43
+            </div>
+            <div class="col-6">
+              <ul>
+                <li>Rain: <span id="rain"> </span>mm</li>
+                <li>Humidity: <span id="humidity"></span>%</li>
+                <li>Wind: <span id="wind"></span> km/h</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-2">
+              <ul>
+                <li>Friday 30 <i class="fa-solid fa-cloud-sun"></i></li>
+                <li class="high-temperature">23ºC <small>13ºC</small></li>
+              </ul>
+            </div>
+            <div class="col-2">
+              <li>Saturday 1 <i class="fa-solid fa-sun"></i></li>
+              <li class="high-temperature">27ºC <small>15ºC</small></li>
+            </div>
+            <div class="col-2">
+              <li>Sunday 2 <i class="fa-solid fa-sun"></i></li>
+              <li class="high-temperature">30ºC <small>17ºC</small></li>
+            </div>
+            <div class="col-2">
+              <li>Monday 3 <i class="fa-solid fa-sun"></i></li>
+              <li class="high-temperature">27ºC <small>16ºC</small></li>
+            </div>
+            <div class="col-2">
+              <li>Tuesday 4 <i class="fa-solid fa-sun"></i></li>
+              <li class="high-temperature">27ºC <small>16ºC</small></li>
+            </div>
+            <div class="col-2">
+              <li>Wednesday 5 <i class="fa-solid fa-sun"></i></li>
+              <li class="high-temperature">28ºC <small>16ºC</small></li>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="src/script.js"></script>
   </body>
 </html>

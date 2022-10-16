@@ -1,0 +1,74 @@
+body {
+  font-family: "Roboto", sans-serif;
+}
+
+h1 {
+  text-align: center;
+  margin: 20px;
+  padding: 20px;
+  background-color: #2a807a;
+  color: white;
+  font-size: light;
+  border-radius: 5px;
+}
+form {
+  padding: 10px;
+  text-align: center;
+}
+
+ul {
+  padding-left: 0;
+}
+li {
+  list-style: none;
+}
+
+.form-group {
+  width: 40%;
+}
+.btn {
+  font-size: 30px;
+}
+.row {
+  text-align: center;
+}
+.card {
+  margin: 60px;
+}
+.current-city {
+  font-size: 30px;
+  font-weight: bolder;
+}
+.actual-temperature {
+  font-size: 30px;
+  font-weight: bolder;
+}
+
+.form-group {
+  padding: 5px 10px 5px 15px;
+  border-radius: 5px;
+}
+.search-button {
+  margin: 5px;
+  padding: 5px 15px;
+  background-color: #2a807a;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  transition: all 250ms ease-in-out;
+}
+.search-button:hover {
+  background-color: white;
+  color: #2a807a;
+  border: 1px solid #2a807a;
+}
+
+.fa-sun {
+  color: gold;
+}
+.fa-cloud-sun {
+  color: rgb(190, 169, 49);
+}
+.high-temperature {
+  font-weight: bold;
+}
