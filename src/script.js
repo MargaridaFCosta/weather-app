@@ -36,33 +36,14 @@ today.innerHTML = `${day}, ${date} ${month}, ${hour}:${minutes}`;
 function submittCity(event) {
   event.preventDefault();
   let searchInput = document.querySelector("#search-input");
-  let searchCity = document.querySelector("#city-input");
   let cityInput = searchInput.value.trim();
   let apiKey = "bd5b4461863eddaa6ced0a0a67989e0a";
   let url = `https://api.openweathermap.org/data/2.5/weather?q=${cityInput}&appid=${apiKey}&units=metric`;
   if (cityInput) {
-    searchCity.innerHTML = `${cityInput}`;
     axios.get(url).then(showWeater);
   }
 }
 function showWeater(response) {
-  let temperature = Math.round(response.data.main.temp);
-  let rainLocation = Math.round(response.data.rain);
-  let windLocation = Math.round(response.data.wind.speed);
-  let humiLocation = Math.round(response.data.main.humidity);
-  let fakeTemp = document.querySelector("#temp");
-  let rain = document.querySelector("#rain");
-  let wind = document.querySelector("#wind");
-  let humidity = document.querySelector("#humidity");
-  fakeTemp.innerHTML = `${temperature}`;
-  rain.innerHTML = `${rainLocation}`;
-  wind.innerHTML = `${windLocation}`;
-  humidity.innerHTML = `${humiLocation}`;
-}
-let form = document.querySelector("#search-form");
-form.addEventListener("submit", submittCity);
-
-function showCurrentLocat(response) {
   let city = document.querySelector("#current-city");
   let temperature = Math.round(response.data.main.temp);
   let rainLocation = Math.round(response.data.rain);
@@ -78,13 +59,15 @@ function showCurrentLocat(response) {
   wind.innerHTML = `${windLocation}`;
   humidity.innerHTML = `${humiLocation}`;
 }
+let form = document.querySelector("#search-form");
+form.addEventListener("submit", submittCity);
 
 function getCurrentLocation(position) {
   let lat = position.coords.latitude;
   let lon = position.coords.longitude;
   let apiKey = "bd5b4461863eddaa6ced0a0a67989e0a";
   let url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
-  axios.get(url).then(showCurrentLocat);
+  axios.get(url).then(showWeater);
 }
 
 function getLocation(event) {
