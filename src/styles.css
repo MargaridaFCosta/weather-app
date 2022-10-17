@@ -33,7 +33,7 @@ li {
   text-align: center;
 }
 .card {
-  margin: 60px;
+  margin: 60px 60px 5px;
 }
 .current-city {
   font-size: 30px;
@@ -71,4 +71,11 @@ li {
 }
 .high-temperature {
   font-weight: bold;
+}
+
+.footer {
+  text-align: center;
+  font-size: 10px;
+  margin: 0px;
+  padding: 5px;
 }
