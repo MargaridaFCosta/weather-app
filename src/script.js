@@ -45,18 +45,19 @@ function handleSubmit(event) {
 }
 
 function showWeater(response) {
+  console.log(response.data);
   let city = document.querySelector("#current-city");
   let temperature = Math.round(response.data.main.temp);
-  let rainLocation = Math.round(response.data.rain);
+  let descriptionLocation = response.data.weather[0].description;
   let windLocation = Math.round(response.data.wind.speed);
   let humiLocation = Math.round(response.data.main.humidity);
   let actualTemp = document.querySelector("#temp");
-  let rain = document.querySelector("#rain");
+  let description = document.querySelector("#description");
   let wind = document.querySelector("#wind");
   let humidity = document.querySelector("#humidity");
   city.innerHTML = response.data.name;
   actualTemp.innerHTML = `${temperature}`;
-  rain.innerHTML = `${rainLocation}`;
+  description.innerHTML = `${descriptionLocation}`;
   wind.innerHTML = `${windLocation}`;
   humidity.innerHTML = `${humiLocation}`;
 }
