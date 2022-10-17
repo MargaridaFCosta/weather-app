@@ -45,7 +45,6 @@ function handleSubmit(event) {
 }
 
 function showWeater(response) {
-  console.log(response.data);
   let city = document.querySelector("#current-city");
   let temperature = Math.round(response.data.main.temp);
   let descriptionLocation = response.data.weather[0].description;
