@@ -33,16 +33,17 @@ let minutes = now.getMinutes();
 let today = document.querySelector("#today-date");
 today.innerHTML = `${day}, ${date} ${month}, ${hour}:${minutes}`;
 
-function submittCity(event) {
-  event.preventDefault();
-  let searchInput = document.querySelector("#search-input");
-  let cityInput = searchInput.value.trim();
+function submittCity(searchInput) {
   let apiKey = "bd5b4461863eddaa6ced0a0a67989e0a";
-  let url = `https://api.openweathermap.org/data/2.5/weather?q=${cityInput}&appid=${apiKey}&units=metric`;
-  if (cityInput) {
-    axios.get(url).then(showWeater);
-  }
+  let url = `https://api.openweathermap.org/data/2.5/weather?q=${searchInput}&appid=${apiKey}&units=metric`;
+  axios.get(url).then(showWeater);
 }
+function handleSubmit(event) {
+  event.preventDefault();
+  let searchInput = document.querySelector("#search-input").value;
+  submittCity(searchInput);
+}
+
 function showWeater(response) {
   let city = document.querySelector("#current-city");
   let temperature = Math.round(response.data.main.temp);
@@ -77,3 +78,5 @@ function getLocation(event) {
 
 let button = document.querySelector("#current");
 button.addEventListener("click", getLocation);
+
+submittCity("Lisboa");
