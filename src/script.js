@@ -49,12 +49,12 @@ function showWeater(response) {
   let rainLocation = Math.round(response.data.rain);
   let windLocation = Math.round(response.data.wind.speed);
   let humiLocation = Math.round(response.data.main.humidity);
-  let fakeTemp = document.querySelector("#temp");
+  let actualTemp = document.querySelector("#temp");
   let rain = document.querySelector("#rain");
   let wind = document.querySelector("#wind");
   let humidity = document.querySelector("#humidity");
   city.innerHTML = response.data.name;
-  fakeTemp.innerHTML = `${temperature}`;
+  actualTemp.innerHTML = `${temperature}`;
   rain.innerHTML = `${rainLocation}`;
   wind.innerHTML = `${windLocation}`;
   humidity.innerHTML = `${humiLocation}`;
@@ -62,7 +62,7 @@ function showWeater(response) {
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", submittCity);
 
-function getCurrentLocation(position) {
+function getCoords(position) {
   let lat = position.coords.latitude;
   let lon = position.coords.longitude;
   let apiKey = "bd5b4461863eddaa6ced0a0a67989e0a";
@@ -72,7 +72,7 @@ function getCurrentLocation(position) {
 
 function getLocation(event) {
   event.preventDefault();
-  navigator.geolocation.getCurrentPosition(getCurrentLocation);
+  navigator.geolocation.getCurrentPosition(getCoords);
 }
 
 let button = document.querySelector("#current");
