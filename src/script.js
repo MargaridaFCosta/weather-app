@@ -34,10 +34,11 @@ let today = document.querySelector("#today-date");
 today.innerHTML = `${day}, ${date} ${month}, ${hour}:${minutes}`;
 
 function submittCity(searchInput) {
-  let apiKey = "bd5b4461863eddaa6ced0a0a67989e0a";
-  let url = `https://api.openweathermap.org/data/2.5/weather?q=${searchInput}&appid=${apiKey}&units=metric`;
+  let apiKey = "ato2b04e4f46da013787d91355bf798f";
+  let url = `https://api.shecodes.io/weather/v1/current?query=${searchInput}&key=${apiKey}&units=metric`;
   axios.get(url).then(showWeater);
 }
+
 function handleSubmit(event) {
   event.preventDefault();
   let searchInput = document.querySelector("#search-input").value;
@@ -46,28 +47,26 @@ function handleSubmit(event) {
 
 function showWeater(response) {
   let city = document.querySelector("#current-city");
-  let temperature = Math.round(response.data.main.temp);
-  let descriptionLocation = response.data.weather[0].description;
+  let temperature = Math.round(response.data.temperature.current);
+  let descriptionLocation = response.data.condition.description;
   let windLocation = Math.round(response.data.wind.speed);
-  let humiLocation = Math.round(response.data.main.humidity);
+  let humiLocation = Math.round(response.data.temperature.humidity);
   let actualTemp = document.querySelector("#temp");
   let description = document.querySelector("#description");
   let wind = document.querySelector("#wind");
   let humidity = document.querySelector("#humidity");
-  city.innerHTML = response.data.name;
+  city.innerHTML = response.data.city;
   actualTemp.innerHTML = `${temperature}`;
   description.innerHTML = `${descriptionLocation}`;
   wind.innerHTML = `${windLocation}`;
   humidity.innerHTML = `${humiLocation}`;
 }
-let form = document.querySelector("#search-form");
-form.addEventListener("submit", submittCity);
 
 function getCoords(position) {
   let lat = position.coords.latitude;
   let lon = position.coords.longitude;
-  let apiKey = "bd5b4461863eddaa6ced0a0a67989e0a";
-  let url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
+  let apiKey = "ato2b04e4f46da013787d91355bf798f";
+  let url = `https://api.shecodes.io/weather/v1/current?lon=${lon}&lat=${lat}&key=${apiKey}&units=metric`;
   axios.get(url).then(showWeater);
 }
 
@@ -75,6 +74,8 @@ function getLocation(event) {
   event.preventDefault();
   navigator.geolocation.getCurrentPosition(getCoords);
 }
+let form = document.querySelector("#search-form");
+form.addEventListener("submit", submittCity);
 
 let button = document.querySelector("#current");
 button.addEventListener("click", getLocation);
