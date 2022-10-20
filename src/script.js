@@ -61,6 +61,9 @@ function showWeater(response) {
   let description = document.querySelector("#description");
   let wind = document.querySelector("#wind");
   let humidity = document.querySelector("#humidity");
+  let icon = document.querySelector("#icon");
+  icon.setAttribute("src", response.data.condition.icon_url);
+  icon.setAttribute("alt", response.data.condition.description);
   city.innerHTML = response.data.city;
   actualTemp.innerHTML = `${temperature}`;
   description.innerHTML = `${descriptionLocation}`;
