@@ -53,7 +53,7 @@ function handleSubmit(event) {
 
 function showWeater(response) {
   let city = document.querySelector("#current-city");
-  let temperature = Math.round(response.data.temperature.current);
+  let celsiusTemp = Math.round(response.data.temperature.current);
   let descriptionLocation = response.data.condition.description;
   let windLocation = Math.round(response.data.wind.speed);
   let humiLocation = Math.round(response.data.temperature.humidity);
@@ -65,7 +65,7 @@ function showWeater(response) {
   icon.setAttribute("src", response.data.condition.icon_url);
   icon.setAttribute("alt", response.data.condition.description);
   city.innerHTML = response.data.city;
-  actualTemp.innerHTML = `${temperature}`;
+  actualTemp.innerHTML = `${celsiusTemp}`;
   description.innerHTML = `${descriptionLocation}`;
   wind.innerHTML = `${windLocation}`;
   humidity.innerHTML = `${humiLocation}`;
@@ -83,6 +83,28 @@ function getLocation(event) {
   event.preventDefault();
   navigator.geolocation.getCurrentPosition(getCoords);
 }
+
+function displayFahrenheit(event) {
+  event.preventDefault();
+  let temperature = document.querySelector("#temp");
+  let fahrenheitTemp = Math.round((celsiusTemp * 9) / 5 + 32);
+  temperature.innerHTML = fahrenheitTemp;
+}
+
+function displayCelsius(event) {
+  event.preventDefault();
+  let temperature = document.querySelector("#temp");
+  temperature.innerHTML = celsiusTemp;
+}
+
+let celsiusTemp = null;
+
+let fahrenheitLink = document.querySelector("#fahrenheit");
+fahrenheitLink.addEventListener("click", displayFahrenheit);
+
+let celsiusLink = document.querySelector("#celsius");
+celsiusLink.addEventListener("click", displayCelsius);
+
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", handleSubmit);
 
