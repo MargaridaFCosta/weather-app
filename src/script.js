@@ -75,7 +75,7 @@ function getLocation(event) {
   navigator.geolocation.getCurrentPosition(getCoords);
 }
 let form = document.querySelector("#search-form");
-form.addEventListener("submit", submittCity);
+form.addEventListener("submit", handleSubmit);
 
 let button = document.querySelector("#current");
 button.addEventListener("click", getLocation);
