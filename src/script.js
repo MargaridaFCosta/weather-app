@@ -28,7 +28,13 @@ let month = months[now.getMonth()];
 let day = days[now.getDay()];
 let date = now.getDate();
 let hour = now.getHours();
+if (hour < 10) {
+  hour = `0${hour}`;
+}
 let minutes = now.getMinutes();
+if (minutes < 10) {
+  minutes = `0${minutes}`;
+}
 
 let today = document.querySelector("#today-date");
 today.innerHTML = `${day}, ${date} ${month}, ${hour}:${minutes}`;
