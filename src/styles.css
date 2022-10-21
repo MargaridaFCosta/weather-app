@@ -89,3 +89,12 @@ li {
   top: -10px;
 }
 
+.celsius {
+  color: black;
+  cursor: default;
+}
+
+.celsius:hover {
+  text-decoration: none;
+  color: black;
+}
