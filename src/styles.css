@@ -1,11 +1,15 @@
 body {
   font-family: "Roboto", sans-serif;
+  max-width: 800px;
+  max-height: 800px;
+  padding: 5px;
+  margin: 0 auto;
 }
 
 h1 {
   text-align: center;
-  margin: 20px;
-  padding: 20px;
+  margin: 2px 15px 15px 15px;
+  padding: 15px;
   background-color: #2a807a;
   color: white;
   font-size: light;
@@ -17,9 +21,12 @@ form {
 }
 
 ul {
-  padding-left: 0;
+  margin: 0;
+  padding: 0;
 }
 li {
+  margin: 0;
+  padding: 0;
   list-style: none;
 }
 
@@ -33,7 +40,8 @@ li {
   text-align: center;
 }
 .card {
-  margin: 55px 55px 5px;
+  margin: 30px 30px 5px;
+  background: rgba(202, 220, 219, 0.4);
 }
 .current-city {
   font-size: 30px;
@@ -42,6 +50,11 @@ li {
 .actual-temperature {
   font-size: 30px;
   font-weight: bolder;
+}
+.col-6.actual-temperature {
+  position: relative;
+  top: -30px;
+  padding-bottom: 5px;
 }
 
 .form-group {
