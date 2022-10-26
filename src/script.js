@@ -50,6 +50,48 @@ function handleSubmit(event) {
   let searchInput = document.querySelector("#search-input").value;
   submittCity(searchInput);
 }
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  return days[day];
+}
+
+function displayForecast(response) {
+  console.log(response.data.daily);
+  let forecast = response.data.daily;
+  let forecastElement = document.querySelector("#forecast");
+  let forecastHTML = `<div class="row">`;
+
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 6) {
+      forecastHTML =
+        forecastHTML +
+        `<div class="col-2">
+      <ul>
+                <li> ${formatDay(forecastDay.time)} </br> <img src="
+          http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${
+            forecastDay.condition.icon
+          }.png
+    " alt="" width="42"/> </li>
+                <li class="high-temperature">${Math.round(
+                  forecastDay.temperature.maximum
+                )}ºC <small> ${Math.round(
+          forecastDay.temperature.minimum
+        )} ºC</small></li>
+              </ul> </div>`;
+    }
+  });
+
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
+
+function getForecast(coordinates) {
+  let apiKey = "ato2b04e4f46da013787d91355bf798f";
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?lon=${coordinates.longitude}&lat=${coordinates.latitude}&key=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayForecast);
+}
 
 function showWeater(response) {
   let city = document.querySelector("#current-city");
@@ -69,6 +111,8 @@ function showWeater(response) {
   description.innerHTML = `${descriptionLocation}`;
   wind.innerHTML = `${windLocation}`;
   humidity.innerHTML = `${humiLocation}`;
+
+  getForecast(response.data.coordinates);
 }
 
 function getCoords(position) {
@@ -96,9 +140,10 @@ function displayFahrenheit(event) {
 }
 
 function displayCelsius(event) {
+  event.preventDefault();
   fahrenheitLink.classList.remove("celsius");
   celsiusLink.classList.add("celsius");
-  event.preventDefault();
+
   let temperature = document.querySelector("#temp");
   temperature.innerHTML = celsiusTemp;
 }
