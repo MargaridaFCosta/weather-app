@@ -58,7 +58,6 @@ function formatDay(timestamp) {
 }
 
 function displayForecast(response) {
-  console.log(response.data.daily);
   let forecast = response.data.daily;
   let forecastElement = document.querySelector("#forecast");
   let forecastHTML = `<div class="row">`;
@@ -95,7 +94,7 @@ function getForecast(coordinates) {
 
 function showWeater(response) {
   let city = document.querySelector("#current-city");
-  celsiusTemp = Math.round(response.data.temperature.current);
+  let celsiusTemp = Math.round(response.data.temperature.current);
   let descriptionLocation = response.data.condition.description;
   let windLocation = Math.round(response.data.wind.speed);
   let humiLocation = Math.round(response.data.temperature.humidity);
@@ -127,8 +126,6 @@ function getLocation(event) {
   event.preventDefault();
   navigator.geolocation.getCurrentPosition(getCoords);
 }
-
-let celsiusTemp = null;
 
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", handleSubmit);
