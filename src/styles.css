@@ -96,18 +96,10 @@ li {
   text-transform: capitalize;
   font-size: 19px;
 }
-.units {
-  font-size: 15px;
-  position: relative;
-  top: -10px;
-}
 
 .celsius {
   color: black;
-  cursor: default;
-}
-
-.celsius:hover {
-  text-decoration: none;
-  color: black;
+  font-size: 15px;
+  position: relative;
+  top: -10px;
 }
