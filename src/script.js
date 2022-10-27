@@ -77,7 +77,7 @@ function displayForecast(response) {
                   forecastDay.temperature.maximum
                 )}ºC <small> ${Math.round(
           forecastDay.temperature.minimum
-        )} ºC</small></li>
+        )}ºC</small></li>
               </ul> </div>`;
     }
   });
