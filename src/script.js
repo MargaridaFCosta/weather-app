@@ -66,7 +66,7 @@ function displayForecast(response) {
     if (index < 6) {
       forecastHTML =
         forecastHTML +
-        `<div class="col-2">
+        `<div class="col-sm-2">
       <ul>
                 <li> ${formatDay(forecastDay.time)} </br> <img src="
           http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${
